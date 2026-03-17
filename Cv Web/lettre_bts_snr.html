@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lettre de Motivation - BTS SNR</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #1a1a1a;
+            --accent: #0066cc;
+            --accent-light: #e6f0ff;
+            --text-primary: #2c2c2c;
+            --text-secondary: #666666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1em;
+        }
+
+        .back-button {
+            position: relative;
+            z-index: 1;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .content {
+            padding: 50px 40px;
+            line-height: 2;
+        }
+
+        .lettre-intro {
+            background: var(--accent-light);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border-left: 5px solid var(--accent);
+        }
+
+        .lettre-intro h2 {
+            color: var(--dark);
+            margin-bottom: 12px;
+            font-size: 1.5em;
+        }
+
+        .lettre-text {
+            color: var(--text-secondary);
+            font-size: 1em;
+            line-height: 2;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .lettre-text p {
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid var(--accent-light);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 0;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            body {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1>📄 Lettre de Motivation</h1>
+                <p>BTS SNR (Systèmes Numériques Réseaux)</p>
+            </div>
+            <a href="Cv_Cantin.html" class="back-button">← Retour au CV</a>
+        </header>
+
+        <div class="content">
+            <div class="lettre-intro">
+                <h2>Lettre de Motivation - BTS SNR</h2>
+            </div>
+
+            <div class="lettre-text">
+                <p>
+                    Madame, Monsieur,
+                </p>
+
+                <p>
+                    Je suis vivement intéressé par le BTS Systèmes Numériques Réseaux et je suis convaincu que cette formation 
+                    correspond parfaitement à mes aspirations professionnelles dans le domaine de la gestion des réseaux informatiques.
+                </p>
+
+                <p>
+                    Ma passion pour la technologie et les systèmes numériques s'est renforcée grâce à mes expériences professionnelles. 
+                    Mon travail chez Conselio m'a permis de développer une expertise solide en gestion de réseaux et en administration système. 
+                    Ces expériences pratiques m'ont montré l'importance cruciale d'une maîtrise technique approfondie dans ce domaine.
+                </p>
+
+                <p>
+                    Votre formation, réputée pour son excellence et sa spécialisation en systèmes numériques, est le catalyseur idéal 
+                    pour transformer ma passion en véritable expertise professionnelle. Je suis particulièrement intéressé par les modules 
+                    pratiques et les travaux de laboratoire.
+                </p>
+
+                <p>
+                    J'apporte avec moi une détermination inébranlable, une grande capacité d'apprentissage et une motivation sincère 
+                    pour exceller dans ce domaine technique et en constante évolution.
+                </p>
+
+                <p>
+                    Je reste disponible pour discuter davantage de ma candidature.
+                </p>
+
+                <div class="signature">
+                    <p>Cordialement,</p>
+                    <p><strong>Cantin Quentel</strong></p>
+                    <p>Email: cantinquentel9@gmail.com</p>
+                    <p>Téléphone: +33 6 35 93 32 99</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

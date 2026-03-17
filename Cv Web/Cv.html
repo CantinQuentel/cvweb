@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Cantin Quentel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #1a1a1a;
+            --light: #f5f5f5;
+            --accent: #0066cc;
+            --accent-light: #e6f0ff;
+            --text-primary: #2c2c2c;
+            --text-secondary: #666666;
+            --border: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* HEADER / PRÉSENTATION */
+        .header {
+            background: linear-gradient(135deg, var(--dark) 0%, #2c3e50 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 102, 204, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .header .bio {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 0.95em;
+            opacity: 0.85;
+            line-height: 1.8;
+        }
+
+        /* SECTIONS GÉNÉRALES */
+        section {
+            padding: 50px 40px;
+            border-bottom: 1px solid var(--border);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--dark);
+            margin-bottom: 30px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        /* EXPÉRIENCE & STAGES */
+        .experience-item {
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-left: 4px solid var(--accent);
+            padding-left: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+        }
+
+        .experience-item h3 {
+            font-size: 1.3em;
+            color: var(--dark);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .experience-item .role {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        .experience-item .date {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .experience-item p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* PROJETS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: var(--accent-light);
+            border-radius: 10px;
+            overflow: hidden;
+            border-left: 5px solid var(--accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 102, 204, 0.15);
+            background: linear-gradient(135deg, var(--accent-light) 0%, #f0f8ff 100%);
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 3em;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card h3 {
+            font-size: 1.2em;
+            color: var(--dark);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-button {
+            align-self: flex-start;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .project-button:hover {
+            background: #0052a3;
+            transform: translateX(3px);
+        }
+
+        .project-button:active {
+            transform: translateX(1px);
+        }
+
+        /* LETTRES DE MOTIVATION */
+        .lettres-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .lettre-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .lettre-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .lettre-card:active {
+            transform: translateY(-4px);
+        }
+
+        .lettre-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .lettre-card h3 {
+            font-size: 1.05em;
+            font-weight: 700;
+            line-height: 1.5;
+            color: white;
+        }
+
+        /* CONTACTS */
+        .contacts {
+            background: var(--accent-light);
+            padding: 40px;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 102, 204, 0.1);
+        }
+
+        .contact-item .icon {
+            font-size: 2em;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .contact-item .label {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: color 0.3s ease;
+            word-break: break-word;
+        }
+
+        .contact-item a:hover {
+            color: #0052a3;
+            text-decoration: underline;
+        }
+
+        .contact-item .phone {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 0;
+            }
+
+            .header {
+                padding: 40px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            section {
+                padding: 30px 20px;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lettres-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contacts {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            body {
+                padding: 0;
+            }
+        }
+
+        /* IMPRESSION */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- PRÉSENTATION -->
+        <header class="header">
+            <div class="header-content">
+                <h1>Cantin Quentel</h1>
+                <p class="subtitle">Développeur Web | Monteur Vidéo | Community Manager</p>
+                <p class="bio">
+                    Développeur web passionné avec une expertise en cybersécurité et gestion de réseaux. 
+                    J'aime créer des solutions numériques innovantes et contribuer à des projets technologiques ambitieux. 
+                    Curieux et créatif, je mets mes compétences au service de projets stimulants.
+                </p>
+            </div>
+        </header>
+
+        <!-- EXPÉRIENCE & STAGES -->
+        <section id="experience">
+            <h2>Expérience & Stages</h2>
+            
+            <div class="experience-item">
+                <h3>Conselio</h3>
+                <p class="role">Développeur Web / Gestion de réseaux</p>
+                <p class="date">Mars 2026 - Avril 2026</p>
+                <p>
+                    Développement de mes compétences en codage, utilisation de l'IA, création de sites web et gestion de réseaux. 
+                    Travail sur des projets innovants mettant en avant les dernières technologies.
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <h3>Wait Agency</h3>
+                <p class="role">Consultant en Cybersécurité</p>
+                <p class="date">Octobre 2025 - Novembre 2025</p>
+                <p>
+                    Apprentissage en autonomie des bases de la cybersécurité, test de sécurité effectuer sur un réseau avec Wireshark. Inventaire informatique et shooting photo pour différentes marques.
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <h3>Projet Personnel - Site Web Éducatif</h3>
+                <p class="role">Développeur Full Stack / Designer</p>
+                <p class="date">2025 - 2026</p>
+                <p>
+                    Création d'un site web éducatif interactif présentant les filières du lycée. 
+                    Intégration de modèles 3D et environnements virtuels pour une expérience immersive.
+                </p>
+            </div>
+        </section>
+
+        <!-- PROJETS -->
+        <section id="projects">
+            <h2>Mes Projets</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Photo/Capture d’écran 2026-03-17 à 09.48.31.png" alt="Projet 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>📱 Projet 1: Site Web Éducatif</h3>
+                        <p>
+                            Un site web éducatif interactif en réalité virtuelle permettant de découvrir les différentes filières du lycée. 
+                            Environnements 3D immersifs et navigation intuitive.
+                        </p>
+                        <a href="projet1.html" class="project-button">Voir plus →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Photo/images-2.jpeg" alt="Projet 2">
+                    </div>
+                    <div class="project-content">
+                        <h3>📹 Projet 2: Montage Vidéo</h3>
+                        <p>
+                            Audit complet de cybersécurité pour une entreprise. Analyse des vulnérabilités, 
+                            tests de pénétration et recommandations de sécurité.
+                        </p>
+                        <a href="projet2.html" class="project-button">Voir plus →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Photo/ironman.png" alt="Projet 3">
+                    </div>
+                    <div class="project-content">
+                        <h3>🤖 Projet 3: IronMan robotisé</h3>
+                        <p>
+                            Configuration et gestion complète d'une infrastructure réseau. 
+                            Mise en place de serveurs, configuration de la sécurité et monitoring.
+                        </p>
+                        <a href="projet3.html" class="project-button">Voir plus →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LETTRES DE MOTIVATION -->
+        <section id="lettres">
+            <h2>Lettres de Motivation</h2>
+            <div class="lettres-grid">
+                <a href="lettre_but_mmi.html" class="lettre-card">
+                    <div class="lettre-icon">📄</div>
+                    <h3>Lettre Motivation<br>BUT MMI</h3>
+                </a>
+
+                <a href="lettre_bts_communication.html" class="lettre-card">
+                    <div class="lettre-icon">📄</div>
+                    <h3>Lettre Motivation<br>BTS Communication</h3>
+                </a>
+
+                <a href="lettre_bts_snr.html" class="lettre-card">
+                    <div class="lettre-icon">📄</div>
+                    <h3>Lettre Motivation<br>BTS SNR</h3>
+                </a>
+
+                <a href="lettre_bts_sio.html" class="lettre-card">
+                    <div class="lettre-icon">📄</div>
+                    <h3>Lettre Motivation<br>BTS SIO</h3>
+                </a>
+
+                <a href="lettre_bts_ciel.html" class="lettre-card">
+                    <div class="lettre-icon">📄</div>
+                    <h3>Lettre Motivation<br>BTS CIEL</h3>
+                </a>
+
+                <a href="lettre_but_informatique.html" class="lettre-card">
+                    <div class="lettre-icon">📄</div>
+                    <h3>Lettre Motivation<br>BUT Informatique</h3>
+                </a>
+            </div>
+        </section>
+
+        <!-- CONTACTS -->
+        <section id="contacts">
+            <h2>Me Contacter</h2>
+            <div class="contacts">
+                <div class="contact-item">
+                    <span class="icon">📧</span>
+                    <span class="label">Email</span>
+                    <a href="mailto:cantinquentel9@gmail.com">cantinquentel9@gmail.com</a>
+                </div>
+
+                <div class="contact-item">
+                    <span class="icon">📱</span>
+                    <span class="label">Téléphone</span>
+                    <p class="phone">+33 6 35 93 32 99</p>
+                </div>
+
+                <div class="contact-item">
+                    <span class="icon">💼</span>
+                    <span class="label">LinkedIn</span>
+                    <a href="https://www.linkedin.com/in/cantin-quentel-743b74286/" target="_blank">linkedin.com/in/CantinQuentel</a>
+                </div>
+
+                <div class="contact-item">
+                    <span class="icon">🐙</span>
+                    <span class="label">GitHub</span>
+                    <a href="https://github.com/CantinQuentel" target="_blank">github.com/CantinQuentel</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
