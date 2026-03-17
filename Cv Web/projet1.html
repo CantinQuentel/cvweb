@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1 - Application Web</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #1a1a1a;
+            --light: #f5f5f5;
+            --accent: #0066cc;
+            --accent-light: #e6f0ff;
+            --text-primary: #2c2c2c;
+            --text-secondary: #666666;
+            --border: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, var(--dark) 0%, #2c3e50 100%);
+            color: white;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 102, 204, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1em;
+        }
+
+        .back-button {
+            position: relative;
+            z-index: 1;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* CONTENU */
+        .content {
+            padding: 50px 40px;
+        }
+
+        .project-intro {
+            background: var(--accent-light);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            border-left: 5px solid var(--accent);
+        }
+
+        .project-intro h2 {
+            color: var(--dark);
+            margin-bottom: 12px;
+            font-size: 1.5em;
+        }
+
+        .project-intro p {
+            color: var(--text-secondary);
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        /* SECTIONS */
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h3 {
+            font-size: 1.5em;
+            color: var(--dark);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.8;
+            font-size: 1em;
+        }
+
+        /* IMAGES */
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .image-box {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 250px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 2em;
+        }
+
+        .image-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 102, 204, 0.2);
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-label {
+            text-align: center;
+            margin-top: 10px;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            font-weight: 600;
+        }
+
+        /* TECHNOLOGIES */
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .tech-tag {
+            padding: 8px 16px;
+            background: var(--accent);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 0;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .image-container {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 0;
+            }
+        }
+
+        /* IMPRESSION */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-content">
+                <h1>📱 Projet 1: Application Web</h1>
+                <p>Développement d'une application web interactive</p>
+            </div>
+            <a href="Cv.html" class="back-button">← Retour au CV</a>
+        </header>
+
+        <!-- CONTENU -->
+        <div class="content">
+            <!-- INTRODUCTION -->
+            <div class="project-intro">
+                <h2>Vue d'ensemble du projet</h2>
+                <p>
+                    Ce projet est une application web interactive développée avec React et Node.js. 
+                    L'objectif était de créer une plateforme moderne et intuitive intégrant une base de données 
+                    et une authentification utilisateur sécurisée. Le projet a duré 3 mois et a impliqué 
+                    la conception, le développement, et le déploiement en production.
+                </p>
+            </div>
+
+            <!-- DESCRIPTION GÉNÉRALE -->
+            <div class="section">
+                <h3>Description</h3>
+                <p>
+                    L'application a été conçue pour résoudre un problème spécifique : permettre aux utilisateurs 
+                    de collaborer en temps réel sur des projets. La plateforme offre une interface utilisateur 
+                    clean et responsive qui fonctionne sur tous les appareils.
+                </p>
+                <p>
+                    Les utilisateurs peuvent créer des comptes, se connecter de manière sécurisée, et accéder à un tableau de bord 
+                    personnalisé. Ils peuvent également inviter d'autres utilisateurs et collaborer sur des tâches communes.
+                </p>
+
+                <!-- IMAGES SECTION 1 -->
+                <div class="image-container">
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Ecran+Accueil" alt="Écran d'accueil">
+                        </div>
+                        <div class="image-label">Écran d'accueil</div>
+                    </div>
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Tableau+de+Bord" alt="Tableau de bord">
+                        </div>
+                        <div class="image-label">Tableau de bord</div>
+                    </div>
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Interface+Utilisateur" alt="Interface utilisateur">
+                        </div>
+                        <div class="image-label">Interface utilisateur</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DÉFIS ET SOLUTIONS -->
+            <div class="section">
+                <h3>Défis et Solutions</h3>
+                <p>
+                    Lors du développement, j'ai rencontré plusieurs défis : la gestion d'état complexe, 
+                    l'optimisation des performances, et la sécurité des données utilisateurs.
+                </p>
+                <p>
+                    Pour résoudre la gestion d'état, j'ai implémenté Redux, une bibliothèque de gestion d'état 
+                    pour React. Pour les performances, j'ai optimisé le chargement des données via des requêtes API asynchrones 
+                    et la mise en cache. Pour la sécurité, j'ai utilisé JWT (JSON Web Tokens) pour l'authentification 
+                    et le chiffrement des données sensibles.
+                </p>
+
+                <!-- IMAGES SECTION 2 -->
+                <div class="image-container">
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Architecture" alt="Architecture système">
+                        </div>
+                        <div class="image-label">Architecture système</div>
+                    </div>
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Code+Backend" alt="Code backend">
+                        </div>
+                        <div class="image-label">Implémentation backend</div>
+                    </div>
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Tests" alt="Tests unitaires">
+                        </div>
+                        <div class="image-label">Tests et déploiement</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RÉSULTATS ET APPRENTISSAGES -->
+            <div class="section">
+                <h3>Résultats et Apprentissages</h3>
+                <p>
+                    Le projet a été déployé avec succès en production et a été utilisé par plus de 100 utilisateurs 
+                    lors de sa phase de test. Les retours utilisateurs ont été très positifs, avec un taux de satisfaction de 95%.
+                </p>
+                <p>
+                    À travers ce projet, j'ai approfondi mes connaissances en React, Node.js, et en gestion de bases de données. 
+                    J'ai également appris l'importance des tests unitaires, de la documentation du code, et des bonnes pratiques 
+                    de sécurité dans le développement web.
+                </p>
+
+                <!-- IMAGES SECTION 3 -->
+                <div class="image-container">
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Resultats" alt="Résultats et statistiques">
+                        </div>
+                        <div class="image-label">Résultats et statistiques</div>
+                    </div>
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Feedback+Utilisateurs" alt="Feedback utilisateurs">
+                        </div>
+                        <div class="image-label">Feedback utilisateurs</div>
+                    </div>
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Deploiement" alt="Déploiement en production">
+                        </div>
+                        <div class="image-label">Déploiement en production</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TECHNOLOGIES UTILISÉES -->
+            <div class="section">
+                <h3>Technologies Utilisées</h3>
+                <div class="tech-list">
+                    <span class="tech-tag">React.js</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">Express</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">JWT</span>
+                    <span class="tech-tag">Redux</span>
+                    <span class="tech-tag">REST API</span>
+                    <span class="tech-tag">Docker</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 2 - Design System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark: #1a1a1a;
+            --light: #f5f5f5;
+            --accent: #0066cc;
+            --accent-light: #e6f0ff;
+            --text-primary: #2c2c2c;
+            --text-secondary: #666666;
+            --border: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, var(--dark) 0%, #2c3e50 100%);
+            color: white;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 102, 204, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1em;
+        }
+
+        .back-button {
+            position: relative;
+            z-index: 1;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* CONTENU */
+        .content {
+            padding: 50px 40px;
+        }
+
+        .project-intro {
+            background: var(--accent-light);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            border-left: 5px solid var(--accent);
+        }
+
+        .project-intro h2 {
+            color: var(--dark);
+            margin-bottom: 12px;
+            font-size: 1.5em;
+        }
+
+        .project-intro p {
+            color: var(--text-secondary);
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        /* SECTIONS */
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h3 {
+            font-size: 1.5em;
+            color: var(--dark);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.8;
+            font-size: 1em;
+        }
+
+        /* IMAGES */
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .image-box {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 250px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 2em;
+        }
+
+        .image-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 102, 204, 0.2);
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-label {
+            text-align: center;
+            margin-top: 10px;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            font-weight: 600;
+        }
+
+        /* TECHNOLOGIES */
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .tech-tag {
+            padding: 8px 16px;
+            background: var(--accent);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 0;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .image-container {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 0;
+            }
+        }
+
+        /* IMPRESSION */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🎨 Projet 2: Design System</h1>
+                <p>Création d'un système de design complet et réutilisable</p>
+            </div>
+            <a href="Cv_Cantin.html" class="back-button">← Retour au CV</a>
+        </header>
+
+        <!-- CONTENU -->
+        <div class="content">
+            <!-- INTRODUCTION -->
+            <div class="project-intro">
+                <h2>Vue d'ensemble du projet</h2>
+                <p>
+                    Ce projet consiste à créer un système de design (Design System) complet avec des composants 
+                    réutilisables pour garantir la cohérence visuelle et fonctionnelle à travers les applications. 
+                    Le Design System inclut une documentation exhaustive, des guidelines de design, et une librairie 
+                    de composants prêts à l'emploi.
+                </p>
+            </div>
+
+            <!-- DESCRIPTION GÉNÉRALE -->
+            <div class="section">
+                <h3>Description</h3>
+                <p>
+                    L'objectif de ce projet était de créer une source unique de vérité pour tous les composants 
+                    d'interface utilisateur. Cela permet aux designers et développeurs de travailler ensemble de manière 
+                    plus efficace et de maintenir une cohérence visuelle à travers tous les produits.
+                </p>
+                <p>
+                    Le Design System inclut des composants comme les boutons, les inputs, les cartes, les modales, 
+                    les navbars, et bien d'autres. Chaque composant est documenté avec des exemples d'utilisation, 
+                    des variantes disponibles, et les principes de design qui les sous-tendent.
+                </p>
+
+                <!-- IMAGES SECTION 1 -->
+                <div class="image-container">
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Design+Tokens" alt="Design Tokens">
+                        </div>
+                        <div class="image-label">Design Tokens</div>
+                    </div>
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Composants" alt="Composants réutilisables">
+                        </div>
+                        <div class="image-label">Composants réutilisables</div>
+                    </div>
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Palette+Couleurs" alt="Palette de couleurs">
+                        </div>
+                        <div class="image-label">Palette de couleurs</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROCESSUS DE CRÉATION -->
+            <div class="section">
+                <h3>Processus de Création</h3>
+                <p>
+                    Le projet a commencé par une analyse des besoins et une recherche sur les meilleures pratiques 
+                    en matière de Design System. J'ai collaboré avec les designers et les développeurs pour identifier 
+                    les composants essentiels et définir leurs spécifications.
+                </p>
+                <p>
+                    Ensuite, j'ai créé une documentation complète dans Figma pour les designs, et implémenté les composants 
+                    en CSS/SCSS avec une architecture modulaire. Chaque composant a été testé pour assurer la cohérence 
+                    visuelle et la responsivité sur tous les appareils.
+                </p>
+
+                <!-- IMAGES SECTION 2 -->
+                <div class="image-container">
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Figma+Design" alt="Figma Design">
+                        </div>
+                        <div class="image-label">Conception Figma</div>
+                    </div>
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=CSS+SCSS" alt="Implémentation CSS">
+                        </div>
+                        <div class="image-label">Implémentation CSS/SCSS</div>
+                    </div>
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Documentation" alt="Documentation complète">
+                        </div>
+                        <div class="image-label">Documentation complète</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IMPACT ET UTILISATION -->
+            <div class="section">
+                <h3>Impact et Utilisation</h3>
+                <p>
+                    Le Design System a été rapidement adopté par l'équipe et a considérablement accéléré le développement 
+                    de nouvelles fonctionnalités. Les développeurs ont pu utiliser les composants pré-construit, 
+                    réduisant le temps de développement de 30%.
+                </p>
+                <p>
+                    De plus, le Design System a amélioré la cohérence visuelle et l'expérience utilisateur à travers 
+                    toutes les applications. Les utilisateurs ont remarqué une amélioration de la qualité générale 
+                    et de la professionnalité de l'interface.
+                </p>
+
+                <!-- IMAGES SECTION 3 -->
+                <div class="image-container">
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Storybook" alt="Storybook intégration">
+                        </div>
+                        <div class="image-label">Storybook intégration</div>
+                    </div>
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Statistiques" alt="Gain de productivité">
+                        </div>
+                        <div class="image-label">Gain de productivité</div>
+                    </div>
+                    <div>
+                        <div class="image-box">
+                            <img src="https://via.placeholder.com/400x250?text=Utilisation" alt="Adoption par l'équipe">
+                        </div>
+                        <div class="image-label">Adoption par l'équipe</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TECHNOLOGIES UTILISÉES -->
+            <div class="section">
+                <h3>Technologies Utilisées</h3>
+                <div class="tech-list">
+                    <span class="tech-tag">Figma</span>
+                    <span class="tech-tag">CSS/SCSS</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Storybook</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Webpack</span>
+                    <span class="tech-tag">NPM</span>
+                    <span class="tech-tag">Git</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
